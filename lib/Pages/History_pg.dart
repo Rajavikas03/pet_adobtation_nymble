@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
+import 'package:pet_adobtation_nymble/Const/color.dart';
 
 class History_page extends StatefulWidget {
   const History_page({super.key});
@@ -17,7 +18,7 @@ class __History_pageState extends State<History_page> {
     final width = MediaQuery.of(context).size.width;
     final theme = Theme.of(context);
     return Scaffold(
-      
+      // body: 
     );
   }
 }

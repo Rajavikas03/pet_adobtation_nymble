@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:alert_banner/exports.dart';
 import 'package:confetti/confetti.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:gap/gap.dart';
 import 'package:pet_adobtation_nymble/Const/color.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../Widgets/Alert_banner.dart';
 import '../Widgets/detail_card.dart';
 
 class Detail_page extends StatefulWidget {
@@ -46,25 +48,34 @@ class _Detail_pageState extends State<Detail_page> {
       confettiTimer = Timer(const Duration(seconds: 2), () {
         confetti.stop();
       });
-      showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              icon: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  InkWell(
-                    onTap: () => Navigator.pop(context),
-                    child: Icon(
-                      Icons.close,
-                      color: Colors.red,
-                    ),
-                  ),
-                ],
-              ),
-              title: Text("Rick is adopted !!!"),
-            );
-          });
+      // showDialog(
+      //     context: context,
+      //     builder: (context) {
+      //       return AlertDialog(
+      //         icon: Row(
+      //           mainAxisAlignment: MainAxisAlignment.end,
+      //           children: [
+      //             InkWell(
+      //               onTap: () => Navigator.pop(context),
+      //               child: Icon(
+      //                 Icons.close,
+      //                 color: Colors.red,
+      //               ),
+      //             ),
+      //           ],
+      //         ),
+      //         title: Text("Rick is adopted !!!"),
+      //       );
+      //     });
+      showAlertBanner(
+        safeAreaBottomEnabled: true,
+        context,
+        () => print("TAPPED"),
+        const Alert_Banner(
+          petname: 'Rick',
+        ),
+        alertBannerLocation: AlertBannerLocation.bottom,
+      );
     });
   }
 
@@ -101,7 +112,7 @@ class _Detail_pageState extends State<Detail_page> {
                   color: yellow,
                   height: height * 0.4,
                   child: Image.asset(
-                    "assets/dog/husky.png",
+                    "assets/petimg/husky.png",
                     height: height * 0.4,
                     width: width * 1,
                     fit: BoxFit.fill,
@@ -227,7 +238,7 @@ class _Detail_pageState extends State<Detail_page> {
                                     fontWeight: FontWeight.bold, fontSize: 20),
                               ),
                             )),
-                      )
+                      ),
                     ],
                   ),
                 ),

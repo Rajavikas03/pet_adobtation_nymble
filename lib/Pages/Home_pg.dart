@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
+import 'package:pet_adobtation_nymble/Widgets/fliter.dart';
 
 import '../Const/color.dart';
+import '../Data/data.dart';
+import '../Widgets/GridPet_view.dart';
 
 class Home_pg extends StatefulWidget {
   const Home_pg({Key? key}) : super(key: key);
@@ -24,7 +28,7 @@ class _Home_pgState extends State<Home_pg> {
             Row(
               children: [
                 Gap(width * 0.05),
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 25,
                   backgroundColor: Colors.black,
                   // child: ,
@@ -79,94 +83,25 @@ class _Home_pgState extends State<Home_pg> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(
-                  10,
+                  Filters.length,
                   (index) => filter(
                     width: width,
                     height: height,
-                    text: 'Dog',
+                    text: Filters[index].filterName,
+                    img: Filters[index].icon,
                   ),
                 ),
               ),
             ),
             Gap(height * 0.02),
-
-            // GridView.builder(
-            //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            //         mainAxisSpacing: 0.0,
-            //         crossAxisSpacing: 0.0,
-            //         childAspectRatio: 1.0,
-            //         crossAxisCount: 2),
-            //     itemBuilder: (BuildContext, int) {
-            //       return ListTile(
-            //         tileColor: Colors.black,
-            //       );
-            //     })
-
-            
-
-            // Expanded(
-            //   child: GridView.count(
-            //     crossAxisCount: 2,
-            //     children: List.generate(
-            //       12,
-            //       (index) {
-            //         return SizedBox(
-            //           height: 50,
-            //           width: 50,
-            //           child: GridTile(
-            //             child: Container(
-            //               color: Colors.blueAccent,
-            //               child: Center(
-            //                 child: Text(
-            //                   'Item $index',
-            //                   style: TextStyle(color: Colors.white),
-            //                 ),
-            //               ),
-            //             ),
-            //           ),
-            //         );
-            //       },
-            //     ),
-            //   ),
-            // ),
+            GridPet_Veiw(
+              height: height,
+              width: width,
+              size: 10,
+            ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class filter extends StatelessWidget {
-  const filter({
-    Key? key,
-    required this.width,
-    required this.height,
-    required this.text,
-  }) : super(key: key);
-
-  final double width;
-  final double height;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Gap(width * 0.05),
-        Column(
-          children: [
-            CircleAvatar(
-              radius: 35,
-            ),
-            Gap(height * 0.008),
-            Text(
-              text,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-        Gap(width * 0.05),
-      ],
     );
   }
 }
