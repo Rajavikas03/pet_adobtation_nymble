@@ -97,7 +97,7 @@ class _Home_pgState extends State<Home_pg> {
             GridPet_Veiw(
               height: height,
               width: width,
-              size: 10,
+              size: Pets.length,
             ),
           ],
         ),

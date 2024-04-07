@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:pet_adobtation_nymble/Const/color.dart';
+
+import '../Data/data.dart';
 
 class GridPet_Veiw extends StatelessWidget {
   const GridPet_Veiw({
@@ -30,13 +33,48 @@ class GridPet_Veiw extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   color: purple,
                 ),
-                child: Image.asset(
-                  "assets/petImg/husky.png",
-                  height: height * 0.1,
-                  width: width * 0.3,
-                ),
                 height: height * 0.1,
                 width: width * 0.3,
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      Pets[index].petimg,
+                      fit: BoxFit.fill,
+                      height: height * 0.18,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                          color: Colors.white.withOpacity(0.3),
+                          child: Center(
+                              child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                Pets[index].petNmae,
+                                style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              const Gap(2),
+                              const Text("/"),
+                              const Gap(2),
+                              Text(
+                                Pets[index].petprice,
+                                style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                            ],
+                          )),
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
             );
           }),

@@ -112,7 +112,7 @@ class _Detail_pageState extends State<Detail_page> {
                   color: yellow,
                   height: height * 0.4,
                   child: Image.asset(
-                    "assets/petimg/husky.png",
+                    "assets/petImg/husky.png",
                     height: height * 0.4,
                     width: width * 1,
                     fit: BoxFit.fill,
