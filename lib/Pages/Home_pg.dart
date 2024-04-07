@@ -30,7 +30,7 @@ class _Home_pgState extends State<Home_pg> {
                 Gap(width * 0.05),
                 const CircleAvatar(
                   radius: 25,
-                  backgroundColor: Colors.black,
+                  backgroundColor: purple,
                   // child: ,
                 )
               ],

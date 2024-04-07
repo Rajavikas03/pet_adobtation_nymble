@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:pet_adobtation_nymble/Const/color.dart';
+import 'package:pet_adobtation_nymble/Pages/Detail_pg.dart';
 
 import '../Data/data.dart';
 
@@ -28,52 +30,63 @@ class GridPet_Veiw extends StatelessWidget {
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: purple,
-                ),
-                height: height * 0.1,
-                width: width * 0.3,
-                child: Stack(
-                  children: [
-                    Image.asset(
-                      Pets[index].petimg,
-                      fit: BoxFit.fill,
-                      height: height * 0.18,
+              child: InkWell(
+                onTap: () => Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (context) => Detail_page(
+                      img: Pets[index].petimg,
+                      petname: Pets[index].petNmae,
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Container(
-                          color: Colors.white.withOpacity(0.3),
-                          child: Center(
-                              child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                Pets[index].petNmae,
-                                style: const TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                              const Gap(2),
-                              const Text("/"),
-                              const Gap(2),
-                              Text(
-                                Pets[index].petprice,
-                                style: const TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                            ],
-                          )),
-                        )
-                      ],
-                    )
-                  ],
+                  ),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: purple,
+                  ),
+                  height: height * 0.1,
+                  width: width * 0.3,
+                  child: Stack(
+                    children: [
+                      Image.asset(
+                        Pets[index].petimg,
+                        fit: BoxFit.fill,
+                        height: height * 0.18,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            color: Colors.white.withOpacity(0.3),
+                            child: Center(
+                                child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  Pets[index].petNmae,
+                                  style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                                const Gap(2),
+                                const Text("/"),
+                                const Gap(2),
+                                Text(
+                                  Pets[index].petprice,
+                                  style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                              ],
+                            )),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             );

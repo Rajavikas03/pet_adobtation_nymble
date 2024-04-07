@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ffi';
 
 import 'package:alert_banner/exports.dart';
 import 'package:confetti/confetti.dart';
@@ -13,15 +14,16 @@ import '../Widgets/Alert_banner.dart';
 import '../Widgets/detail_card.dart';
 
 class Detail_page extends StatefulWidget {
-  const Detail_page({super.key});
-
+  const Detail_page({super.key, required this.img, required this.petname});
+  final String img;
+  final String petname;
   @override
   State<Detail_page> createState() => _Detail_pageState();
 }
 
 class _Detail_pageState extends State<Detail_page> {
-  bool isplay = false;
   final confetti = ConfettiController();
+  bool isplay = false;
   Timer? confettiTimer;
 
   // late confettiTimer;
@@ -48,25 +50,6 @@ class _Detail_pageState extends State<Detail_page> {
       confettiTimer = Timer(const Duration(seconds: 2), () {
         confetti.stop();
       });
-      // showDialog(
-      //     context: context,
-      //     builder: (context) {
-      //       return AlertDialog(
-      //         icon: Row(
-      //           mainAxisAlignment: MainAxisAlignment.end,
-      //           children: [
-      //             InkWell(
-      //               onTap: () => Navigator.pop(context),
-      //               child: Icon(
-      //                 Icons.close,
-      //                 color: Colors.red,
-      //               ),
-      //             ),
-      //           ],
-      //         ),
-      //         title: Text("Rick is adopted !!!"),
-      //       );
-      //     });
       showAlertBanner(
         safeAreaBottomEnabled: true,
         context,
@@ -86,7 +69,6 @@ class _Detail_pageState extends State<Detail_page> {
     final _controller = PageController();
 
     return Stack(
-      // alignment: Alignment.topCenter,
       children: [
         Scaffold(
           backgroundColor: Color.fromARGB(255, 253, 224, 116),
@@ -98,7 +80,6 @@ class _Detail_pageState extends State<Detail_page> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: lightyellow,
-                  // Color.fromARGB(255, 246, 228, 160)
                 ),
                 child: const Icon(Icons.arrow_back_ios_new_rounded),
               ),

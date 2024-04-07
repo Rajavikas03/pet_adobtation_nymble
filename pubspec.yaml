@@ -26,7 +26,10 @@ flutter:
 
   
   assets:
-    - assets/petImg/
+    - assets/petImg/dogs/
+    - assets/petImg/cats/
+    - assets/petImg/birds/
+    - assets/petImg/rabbits/
     - assets/icons/
     - assets/animation/
     - icons/
