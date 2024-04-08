@@ -18,6 +18,7 @@ class filter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).colorScheme;
     return Row(
       children: [
         Gap(width * 0.05),
@@ -25,7 +26,7 @@ class filter extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 35,
-              backgroundColor: purple,
+              backgroundColor: theme.primary,
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Center(
@@ -36,7 +37,10 @@ class filter extends StatelessWidget {
             Gap(height * 0.008),
             Text(
               text,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: theme.onBackground),
             ),
           ],
         ),

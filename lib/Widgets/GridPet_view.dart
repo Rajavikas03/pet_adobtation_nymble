@@ -41,6 +41,7 @@ class _GridPet_VeiwState extends State<GridPet_Veiw> {
   }
 
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).colorScheme;
     return Expanded(
       child: GridView.builder(
           scrollDirection: Axis.vertical,
@@ -59,7 +60,7 @@ class _GridPet_VeiwState extends State<GridPet_Veiw> {
                       context,
                       () => print("TAPPED"),
                       AlertBanner(
-                        petname: Pets[index].petNmae,
+                        petname: widget.pets[index].petNmae,
                       ),
                       alertBannerLocation: AlertBannerLocation.bottom,
                     );
@@ -68,16 +69,16 @@ class _GridPet_VeiwState extends State<GridPet_Veiw> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => Detail_page(
-                          img: Pets[index].petimg,
-                          petname: Pets[index].petNmae,
-                          sex: Pets[index].petsex,
-                          price: Pets[index].petprice,
-                          breed: Pets[index].petbreed,
-                          age: Pets[index].petAge,
-                          weight: Pets[index].petweight,
+                          img: widget.pets[index].petimg,
+                          petname: widget.pets[index].petNmae,
+                          sex: widget.pets[index].petsex,
+                          price: widget.pets[index].petprice,
+                          breed: widget.pets[index].petbreed,
+                          age: widget.pets[index].petAge,
+                          weight: widget.pets[index].petweight,
                           intt: index,
-                          time: Pets[index].time,
-                          adopt: Pets[index].adopt,
+                          time: widget.pets[index].time,
+                          adopt: widget.pets[index].adopt,
                         ),
                       ),
                     );
@@ -88,7 +89,9 @@ class _GridPet_VeiwState extends State<GridPet_Veiw> {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: widget.pets[index].adopt ? disable : purple,
+                      color: widget.pets[index].adopt
+                          ? theme.secondary
+                          : theme.primary,
                     ),
                     height: widget.height * 0.1,
                     width: widget.width * 0.3,
@@ -110,20 +113,20 @@ class _GridPet_VeiwState extends State<GridPet_Veiw> {
                                 children: [
                                   Text(
                                     widget.pets[index].petNmae,
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.white),
+                                        color: theme.background),
                                   ),
                                   const Gap(2),
                                   const Text("/"),
                                   const Gap(2),
                                   Text(
                                     widget.pets[index].petprice,
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.white),
+                                        color: theme.background),
                                   ),
                                 ],
                               )),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:pet_adobtation_nymble/Const/color.dart';
 
 class detail_card extends StatelessWidget {
   const detail_card({
@@ -19,6 +20,7 @@ class detail_card extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).colorScheme;
     return Row(
       children: [
         Gap(width * 0.02),
@@ -33,15 +35,13 @@ class detail_card extends StatelessWidget {
               Text(
                 title,
                 style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
+                    fontWeight: FontWeight.bold, fontSize: 18, color: black),
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
               ),
               Text(
                 subtitle,
-                style: const TextStyle(fontWeight: FontWeight.w200),
+                style: const TextStyle(fontWeight: FontWeight.w200, color: black),
               )
             ],
           ),

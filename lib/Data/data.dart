@@ -1,4 +1,5 @@
 // import 'package:flutter/widgets.dart';
+const user = "James";
 
 class Pet {
   String petNmae;
@@ -24,7 +25,7 @@ class Pet {
     required this.catogory,
     required this.adopt,
     required this.wishlist,
-    this.time,
+    required this.time,
   });
 }
 
@@ -50,6 +51,7 @@ List<Pet> Pets = [
     catogory: "Dog",
     adopt: false,
     wishlist: false,
+    time: '',
   ),
   Pet(
       petNmae: "Jimmy",
@@ -61,7 +63,8 @@ List<Pet> Pets = [
       petsex: "Male",
       catogory: "Dog",
       adopt: false,
-      wishlist: false),
+      wishlist: false,
+      time: ''),
   Pet(
       petNmae: "Jhonny",
       petAge: "1.8 year",
@@ -72,7 +75,8 @@ List<Pet> Pets = [
       petsex: "Male",
       catogory: "Dog",
       adopt: false,
-      wishlist: false),
+      wishlist: false,
+      time: ''),
   Pet(
       petNmae: "jhon",
       petAge: "1.8 year",
@@ -83,7 +87,8 @@ List<Pet> Pets = [
       petsex: "Male",
       catogory: "Dog",
       adopt: false,
-      wishlist: false),
+      wishlist: false,
+      time: ''),
   Pet(
       petNmae: "ramu",
       petAge: "1.8 year",
@@ -94,7 +99,8 @@ List<Pet> Pets = [
       petsex: "Male",
       catogory: "Dog",
       adopt: false,
-      wishlist: false),
+      wishlist: false,
+      time: ''),
   Pet(
       petNmae: "sinu",
       petAge: "1.8 year",
@@ -105,7 +111,8 @@ List<Pet> Pets = [
       petsex: "Male",
       catogory: "Dog",
       adopt: false,
-      wishlist: false),
+      wishlist: false,
+      time: ''),
   Pet(
       petNmae: "DOG",
       petAge: "1.8 year",
@@ -116,7 +123,8 @@ List<Pet> Pets = [
       petsex: "Male",
       catogory: "Dog",
       adopt: false,
-      wishlist: false),
+      wishlist: false,
+      time: ''),
   Pet(
       petNmae: "Samantha",
       petAge: "1 year",
@@ -127,7 +135,8 @@ List<Pet> Pets = [
       petsex: "Female",
       catogory: "Cat",
       adopt: false,
-      wishlist: false),
+      wishlist: false,
+      time: ''),
   Pet(
       petNmae: "meow",
       petAge: "1 year",
@@ -138,7 +147,8 @@ List<Pet> Pets = [
       petsex: "Female",
       catogory: "Cat",
       adopt: false,
-      wishlist: false),
+      wishlist: false,
+      time: ''),
   Pet(
       petNmae: "meow meow",
       petAge: "1 year",
@@ -149,7 +159,8 @@ List<Pet> Pets = [
       petsex: "Female",
       catogory: "Cat",
       adopt: false,
-      wishlist: false),
+      wishlist: false,
+      time: ''),
   Pet(
       petNmae: "Killi",
       petAge: "1 year",
@@ -158,9 +169,10 @@ List<Pet> Pets = [
       petbreed: "persian",
       petweight: "2 Kg",
       petsex: "Female",
-      catogory: "Cat",
+      catogory: "Bird",
       adopt: false,
-      wishlist: false),
+      wishlist: false,
+      time: ''),
   Pet(
       petNmae: "bird",
       petAge: "1 year",
@@ -169,9 +181,10 @@ List<Pet> Pets = [
       petbreed: "persian",
       petweight: "2 Kg",
       petsex: "Female",
-      catogory: "Cat",
+      catogory: "Bird",
       adopt: false,
-      wishlist: false),
+      wishlist: false,
+      time: ''),
   Pet(
       petNmae: "Pachai killi",
       petAge: "1 year",
@@ -180,9 +193,10 @@ List<Pet> Pets = [
       petbreed: "persian",
       petweight: "2 Kg",
       petsex: "Female",
-      catogory: "Cat",
+      catogory: "Bird",
       adopt: false,
-      wishlist: false),
+      wishlist: false,
+      time: ''),
   Pet(
       petNmae: "Eagle",
       petAge: "1 year",
@@ -193,7 +207,8 @@ List<Pet> Pets = [
       petsex: "Female",
       catogory: "Bird",
       adopt: false,
-      wishlist: false),
+      wishlist: false,
+      time: ''),
   Pet(
       petNmae: "",
       petAge: "1 year",
@@ -204,7 +219,8 @@ List<Pet> Pets = [
       petsex: "Male",
       catogory: "Rabbit",
       adopt: false,
-      wishlist: false),
+      wishlist: false,
+      time: ''),
   Pet(
       petNmae: "CAT",
       petAge: "1 year",
@@ -215,7 +231,8 @@ List<Pet> Pets = [
       petsex: "Female",
       catogory: "Rabbit",
       adopt: false,
-      wishlist: false),
+      wishlist: false,
+      time: ''),
 ];
 
 List<Filter> Filters = [

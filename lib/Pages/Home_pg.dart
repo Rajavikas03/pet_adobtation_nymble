@@ -22,14 +22,6 @@ class _Home_pgState extends State<Home_pg> {
   void initState() {
     super.initState();
     // _controller.addListener(() {
-    //   setState(() {
-    //     _filteredPets = Pets.where((pet) {
-    //       return pet.petNmae
-    //           .toLowerCase()
-    //           .contains(_controller.text.toLowerCase());
-    //     }).toList();
-    //   });
-    // });
   }
 
   void filterPets(String query) {
@@ -46,20 +38,37 @@ class _Home_pgState extends State<Home_pg> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
-    final theme = Theme.of(context);
+    final theme = Theme.of(context).colorScheme;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: theme.background,
         body: Column(
           children: [
             Gap(height * 0.03),
             Row(
               children: [
                 Gap(width * 0.05),
-                const CircleAvatar(
+                CircleAvatar(
                   radius: 25,
-                  backgroundColor: purple,
-                  // child:,
-                )
+                  backgroundColor: theme.primary,
+                ),
+                const Gap(5),
+                const Column(
+                  children: [
+                    Text(
+                      user,
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    Row(
+                      children: [
+                         Gap(5),
+                        Text("Mubai,chor bajazar"),
+                        Icon(Icons.location_on)
+                      ],
+                    ),
+                  ],
+                ),
               ],
             ),
             Gap(height * 0.03),
@@ -97,14 +106,17 @@ class _Home_pgState extends State<Home_pg> {
             Row(
               children: [
                 Gap(width * 0.05),
-                const Text(
+                Text(
                   "Categories",
-                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: theme.onBackground),
                 ),
                 Gap(width * 0.4),
-                const Text(
+                Text(
                   "View all -->",
-                  style: TextStyle(fontSize: 15, color: Colors.orange),
+                  style: TextStyle(fontSize: 15, color: theme.onBackground),
                 ),
               ],
             ),

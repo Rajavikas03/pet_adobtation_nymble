@@ -2,10 +2,14 @@ import 'dart:async';
 
 import 'package:alert_banner/exports.dart';
 import 'package:confetti/confetti.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:pet_adobtation_nymble/Const/color.dart';
+import 'package:pet_adobtation_nymble/Pages/History_pg.dart';
+import 'package:pet_adobtation_nymble/Widgets/Custom_Icon.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../Bottom_nav_bar/bottom_nav_bar.dart';
@@ -84,21 +88,21 @@ class _Detail_pageState extends State<Detail_page> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
-    final theme = Theme.of(context);
+    final theme = Theme.of(context).colorScheme;
     final _controller = PageController();
 
     return Stack(
       children: [
         Scaffold(
-          backgroundColor: Color.fromARGB(255, 253, 224, 116),
+          backgroundColor: theme.primaryContainer,
           appBar: AppBar(
-            backgroundColor: yellow,
+            backgroundColor: theme.primaryContainer,
             leading: Padding(
               padding: const EdgeInsets.all(2.0),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: lightyellow,
+                  color: theme.primaryContainer,
                 ),
                 child: GestureDetector(
                     onTap: () => Navigator.push(
@@ -111,41 +115,68 @@ class _Detail_pageState extends State<Detail_page> {
           ),
           body: Column(
             children: [
-              Expanded(
-                flex: 2,
-                child: Container(
-                  color: yellow,
-                  height: height * 0.4,
-                  child: Hero(
-                    tag: widget.intt,
-                    child: GestureDetector(
-                      onTap: () => showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            backgroundColor: Colors.white.withOpacity(0.3),
-                            title: InteractiveViewer(
-                              maxScale: 5.0,
-                              minScale: 0.01,
-                              child: Image.asset(
-                                widget.img,
-                                height: height * 0.5,
-                                width: width * 1,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                      child: Image.asset(
-                        widget.img,
-                        height: height * 0.5,
-                        width: width * 1,
-                        fit: BoxFit.contain,
+              Stack(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      color: theme.primaryContainer,
+                      height: height * 0.4,
+                      child: Hero(
+                        tag: widget.intt,
+                        child: GestureDetector(
+                          onTap: () => showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                backgroundColor: Colors.white.withOpacity(0.3),
+                                title: InteractiveViewer(
+                                  maxScale: 5.0,
+                                  minScale: 0.01,
+                                  child: Image.asset(
+                                    widget.img,
+                                    height: height * 0.5,
+                                    width: width * 1,
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                          child: Image.asset(
+                            widget.img,
+                            height: height * 0.5,
+                            width: width * 1,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
+                  Positioned(
+                    top: 0,
+                    left: width * 0.84,
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: GestureDetector(
+                        onTap: () => setState(() {
+                          Pets[widget.intt].wishlist = true;
+                        }),
+                        child: SizedBox(
+                          width: width * 0.1,
+                          height: height * 0.05,
+                          child: icon_(
+                              height: height,
+                              imgStr: "icons/heart.png",
+                              width: width,
+                              color: Pets[widget.intt].wishlist
+                                  ? Colors.red
+                                  : theme.secondary),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
               ),
               ClipRRect(
                 borderRadius: const BorderRadius.only(
@@ -153,7 +184,7 @@ class _Detail_pageState extends State<Detail_page> {
                   topRight: Radius.circular(30),
                 ),
                 child: Container(
-                  color: Colors.white,
+                  color: theme.background,
                   height: height * 0.487,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -246,19 +277,22 @@ class _Detail_pageState extends State<Detail_page> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(40),
                               ),
-                              // padding: EdgeInsets.symmetric(
-                              //     horizontal: width * 0.35,
-                              //     vertical: height * 0.02),
                             ),
                             onPressed: () {
                               if (!Pets[widget.intt].adopt) {
                                 setState(() {
                                   Pets[widget.intt].adopt = true;
+                                  Pets[widget.intt].wishlist = true;
                                   widget.adopt = true;
                                   Pets[widget.intt].time =
                                       DateFormat('HH-mm-ss \'on\' dd/MM/yyyy')
                                           .format(DateTime.now());
-                                  print("hiii ${widget.intt}");
+                                  print("hiii ${Pets[widget.intt].time}");
+                                  history_list.add({
+                                    // Pets[widget.intt].petNmae,
+                                    Pets[widget.intt].time,
+                                  });
+                                  print(history_list);
                                 });
                               }
                               playConfetti();
