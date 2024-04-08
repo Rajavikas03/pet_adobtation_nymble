@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:pet_adobtation_nymble/Const/color.dart';
-import 'package:pet_adobtation_nymble/Pages/Home_pg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../Bottom_nav_bar/bottom_nav_bar.dart';
@@ -105,7 +104,7 @@ class _Detail_pageState extends State<Detail_page> {
                     onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => buttom_nav_bar())),
+                            builder: (context) => const buttom_nav_bar())),
                     child: const Icon(Icons.arrow_back_ios_new_rounded)),
               ),
             ),
@@ -119,11 +118,31 @@ class _Detail_pageState extends State<Detail_page> {
                   height: height * 0.4,
                   child: Hero(
                     tag: widget.intt,
-                    child: Image.asset(
-                      widget.img,
-                      height: height * 0.5,
-                      width: width * 1,
-                      fit: BoxFit.contain,
+                    child: GestureDetector(
+                      onTap: () => showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            backgroundColor: Colors.white.withOpacity(0.3),
+                            title: InteractiveViewer(
+                              maxScale: 5.0,
+                              minScale: 0.01,
+                              child: Image.asset(
+                                widget.img,
+                                height: height * 0.5,
+                                width: width * 1,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                      child: Image.asset(
+                        widget.img,
+                        height: height * 0.5,
+                        width: width * 1,
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
                 ),
@@ -227,9 +246,9 @@ class _Detail_pageState extends State<Detail_page> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(40),
                               ),
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: width * 0.3,
-                                  vertical: height * 0.01),
+                              // padding: EdgeInsets.symmetric(
+                              //     horizontal: width * 0.35,
+                              //     vertical: height * 0.02),
                             ),
                             onPressed: () {
                               if (!Pets[widget.intt].adopt) {
@@ -245,21 +264,26 @@ class _Detail_pageState extends State<Detail_page> {
                               playConfetti();
                             },
                             child: Padding(
-                              padding: EdgeInsets.all(12.0),
-                              child: Pets[widget.intt].adopt
-                                  ? Text(
-                                      // "Adopt Me...",
-                                      "Already Adopted",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20),
-                                    )
-                                  : Text(
-                                      "Adopt Me...",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20),
-                                    ),
+                              padding:
+                                  const EdgeInsets.only(top: 20, bottom: 20),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Pets[widget.intt].adopt
+                                      ? const Text(
+                                          "Adoptted Sucessfully",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 18),
+                                        )
+                                      : const Text(
+                                          "Adopt Me...",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 20),
+                                        )
+                                ],
+                              ),
                             )),
                       ),
                     ],
