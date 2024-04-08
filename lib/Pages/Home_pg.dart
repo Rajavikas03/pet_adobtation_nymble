@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:pet_adobtation_nymble/Widgets/fliter.dart';
 
@@ -15,7 +14,35 @@ class Home_pg extends StatefulWidget {
 }
 
 class _Home_pgState extends State<Home_pg> {
+  TextEditingController _controller = TextEditingController();
+
+  List<Pet> _filteredPets = Pets;
+
   @override
+  void initState() {
+    super.initState();
+    // _controller.addListener(() {
+    //   setState(() {
+    //     _filteredPets = Pets.where((pet) {
+    //       return pet.petNmae
+    //           .toLowerCase()
+    //           .contains(_controller.text.toLowerCase());
+    //     }).toList();
+    //   });
+    // });
+  }
+
+  void filterPets(String query) {
+    setState(() {
+      if (query.isNotEmpty) {
+        _filteredPets = Pets.where((pet) =>
+            pet.petNmae.toLowerCase().contains(query.toLowerCase())).toList();
+      } else {
+        _filteredPets = Pets;
+      }
+    });
+  }
+
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
@@ -31,7 +58,7 @@ class _Home_pgState extends State<Home_pg> {
                 const CircleAvatar(
                   radius: 25,
                   backgroundColor: purple,
-                  // child: ,
+                  // child:,
                 )
               ],
             ),
@@ -44,10 +71,14 @@ class _Home_pgState extends State<Home_pg> {
                   height: height * 0.06,
                   child: Center(
                     child: TextField(
+                      controller: _controller,
+                      onChanged: (value) {
+                        filterPets(value);
+                      },
                       autocorrect: true,
                       decoration: InputDecoration(
                         prefixIcon: const Icon(Icons.search),
-                        hintText: "Search for ...",
+                        hintText: "Search for...",
                         fillColor: grey,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25),
@@ -97,7 +128,8 @@ class _Home_pgState extends State<Home_pg> {
             GridPet_Veiw(
               height: height,
               width: width,
-              size: Pets.length,
+              size: _filteredPets.length,
+              pets: _filteredPets,
             ),
           ],
         ),

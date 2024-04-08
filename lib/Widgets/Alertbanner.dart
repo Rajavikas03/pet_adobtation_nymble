@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Alert_Banner extends StatelessWidget {
-  const Alert_Banner({super.key, required this.petname});
+class AlertBanner extends StatelessWidget {
+  const AlertBanner({super.key, required this.petname});
   final String petname;
 
   @override
@@ -20,7 +20,7 @@ class Alert_Banner extends StatelessWidget {
       ),
       child: Center(
           child: Text(
-        "You've now adopted $petname",
+        "You've already adopted $petname",
         style: const TextStyle(
             fontSize: 18, fontWeight: FontWeight.w800, color: Colors.white),
       )),

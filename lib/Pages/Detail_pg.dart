@@ -1,22 +1,42 @@
 import 'dart:async';
-import 'dart:ffi';
 
 import 'package:alert_banner/exports.dart';
 import 'package:confetti/confetti.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
 import 'package:pet_adobtation_nymble/Const/color.dart';
+import 'package:pet_adobtation_nymble/Pages/Home_pg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../Bottom_nav_bar/bottom_nav_bar.dart';
+import '../Data/data.dart';
 import '../Widgets/Alert_banner.dart';
 import '../Widgets/detail_card.dart';
 
 class Detail_page extends StatefulWidget {
-  const Detail_page({super.key, required this.img, required this.petname});
+  Detail_page(
+      {super.key,
+      required this.img,
+      required this.petname,
+      required this.sex,
+      required this.price,
+      required this.breed,
+      required this.age,
+      required this.weight,
+      required this.intt,
+      required this.adopt,
+      this.time});
   final String img;
   final String petname;
+  final String sex;
+  final String price;
+  final String breed;
+  final String age;
+  final String weight;
+  final int intt;
+  bool adopt;
+  String? time;
   @override
   State<Detail_page> createState() => _Detail_pageState();
 }
@@ -54,8 +74,8 @@ class _Detail_pageState extends State<Detail_page> {
         safeAreaBottomEnabled: true,
         context,
         () => print("TAPPED"),
-        const Alert_Banner(
-          petname: 'Rick',
+        Alert_Banner(
+          petname: Pets[widget.intt].petNmae,
         ),
         alertBannerLocation: AlertBannerLocation.bottom,
       );
@@ -81,7 +101,12 @@ class _Detail_pageState extends State<Detail_page> {
                   borderRadius: BorderRadius.circular(20),
                   color: lightyellow,
                 ),
-                child: const Icon(Icons.arrow_back_ios_new_rounded),
+                child: GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => buttom_nav_bar())),
+                    child: const Icon(Icons.arrow_back_ios_new_rounded)),
               ),
             ),
           ),
@@ -92,11 +117,14 @@ class _Detail_pageState extends State<Detail_page> {
                 child: Container(
                   color: yellow,
                   height: height * 0.4,
-                  child: Image.asset(
-                    "assets/petImg/husky.png",
-                    height: height * 0.4,
-                    width: width * 1,
-                    fit: BoxFit.fill,
+                  child: Hero(
+                    tag: widget.intt,
+                    child: Image.asset(
+                      widget.img,
+                      height: height * 0.5,
+                      width: width * 1,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
               ),
@@ -114,34 +142,32 @@ class _Detail_pageState extends State<Detail_page> {
                       Gap(height * 0.06),
                       SizedBox(
                         height: height * 0.15,
-                        // width: width,
                         child: PageView(
                             scrollDirection: Axis.horizontal,
                             controller: _controller,
                             children: [
                               SizedBox(
                                 height: height * 0.15,
-                                // width: width,
                                 child: Row(
                                   children: [
                                     detail_card(
                                       height: height,
                                       width: width,
-                                      title: 'Rick',
+                                      title: widget.petname,
                                       subtitle: 'name',
                                       color: lightpurple,
                                     ),
                                     detail_card(
                                       height: height,
                                       width: width,
-                                      title: "\$12,000",
+                                      title: widget.price,
                                       subtitle: 'Price',
                                       color: lightgreen,
                                     ),
                                     detail_card(
                                       height: height,
                                       width: width,
-                                      title: 'Husky',
+                                      title: widget.breed,
                                       subtitle: 'breed',
                                       color: lightorange,
                                     ),
@@ -156,21 +182,21 @@ class _Detail_pageState extends State<Detail_page> {
                                     detail_card(
                                       height: height,
                                       width: width,
-                                      title: 'Male',
+                                      title: widget.sex,
                                       subtitle: 'sex',
                                       color: lightpurple,
                                     ),
                                     detail_card(
                                       height: height,
                                       width: width,
-                                      title: '1.5 Year',
+                                      title: widget.age,
                                       subtitle: 'Age',
                                       color: lightgreen,
                                     ),
                                     detail_card(
                                       height: height,
                                       width: width,
-                                      title: '12 Kg',
+                                      title: widget.weight,
                                       subtitle: 'Weight',
                                       color: lightorange,
                                     ),
@@ -197,27 +223,43 @@ class _Detail_pageState extends State<Detail_page> {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: purple,
                               foregroundColor: Colors.white,
-                              elevation: 4, // Elevation
+                              elevation: 4,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    40), // Button border radius
+                                borderRadius: BorderRadius.circular(40),
                               ),
                               padding: EdgeInsets.symmetric(
                                   horizontal: width * 0.3,
                                   vertical: height * 0.01),
                             ),
                             onPressed: () {
+                              if (!Pets[widget.intt].adopt) {
+                                setState(() {
+                                  Pets[widget.intt].adopt = true;
+                                  widget.adopt = true;
+                                  Pets[widget.intt].time =
+                                      DateFormat('HH-mm-ss \'on\' dd/MM/yyyy')
+                                          .format(DateTime.now());
+                                  print("hiii ${widget.intt}");
+                                });
+                              }
                               playConfetti();
-
-                              // AlertDialog(title: ,);
                             },
-                            child: const Padding(
+                            child: Padding(
                               padding: EdgeInsets.all(12.0),
-                              child: Text(
-                                "Adopt Me...",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
-                              ),
+                              child: Pets[widget.intt].adopt
+                                  ? Text(
+                                      // "Adopt Me...",
+                                      "Already Adopted",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20),
+                                    )
+                                  : Text(
+                                      "Adopt Me...",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20),
+                                    ),
                             )),
                       ),
                     ],

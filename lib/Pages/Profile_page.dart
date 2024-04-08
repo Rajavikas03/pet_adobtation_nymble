@@ -12,7 +12,20 @@ class _Profile_pageState extends State<Profile_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text("Profile"),
+      body: Column(
+        children: [
+          // CupertinoSwitch(
+          //   activeColor: Theme.of(context).colorScheme.secondary,
+          //   trackColor: Theme.of(context).colorScheme.primary,
+          //   thumbColor: Theme.of(context).colorScheme.onPrimary,
+          //   value:
+          //       Provider.of<ThemeProvider>(context, listen: false).isDarkMode,
+          //   onChanged: (value) =>
+          //       Provider.of<ThemeProvider>(context, listen: false)
+          //           .toggleTheme(),
+          // ),
+        ],
+      ),
     );
   }
 }

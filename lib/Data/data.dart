@@ -11,6 +11,7 @@ class Pet {
   String catogory;
   bool adopt;
   bool wishlist;
+  String? time;
 
   Pet({
     required this.petNmae,
@@ -23,6 +24,7 @@ class Pet {
     required this.catogory,
     required this.adopt,
     required this.wishlist,
+    this.time,
   });
 }
 
@@ -38,18 +40,19 @@ class Filter {
 
 List<Pet> Pets = [
   Pet(
-      petNmae: "Rick",
-      petAge: "1.5 year",
-      petprice: "\$12,000",
-      petimg: "assets/petImg/dogs/husky.png",
-      petbreed: "Husky",
-      petweight: "12 Kg",
-      petsex: "Male",
-      catogory: "Dog",
-      adopt: false,
-      wishlist: false),
+    petNmae: "Pappu",
+    petAge: "1.5 year",
+    petprice: "\$12,000",
+    petimg: "assets/petImg/dogs/husky.png",
+    petbreed: "Husky",
+    petweight: "12 Kg",
+    petsex: "Male",
+    catogory: "Dog",
+    adopt: false,
+    wishlist: false,
+  ),
   Pet(
-      petNmae: "DOG",
+      petNmae: "Jimmy",
       petAge: "1.8 year",
       petprice: "\$8,000",
       petimg: "assets/petImg/dogs/dog1.png",
@@ -60,7 +63,7 @@ List<Pet> Pets = [
       adopt: false,
       wishlist: false),
   Pet(
-      petNmae: "DOG",
+      petNmae: "Jhonny",
       petAge: "1.8 year",
       petprice: "\$7,500",
       petimg: "assets/petImg/dogs/dog2.png",
@@ -71,7 +74,7 @@ List<Pet> Pets = [
       adopt: false,
       wishlist: false),
   Pet(
-      petNmae: "DOG",
+      petNmae: "jhon",
       petAge: "1.8 year",
       petprice: "\$6,500",
       petimg: "assets/petImg/dogs/dog3.png",
@@ -82,7 +85,7 @@ List<Pet> Pets = [
       adopt: false,
       wishlist: false),
   Pet(
-      petNmae: "DOG",
+      petNmae: "ramu",
       petAge: "1.8 year",
       petprice: "\$7,500",
       petimg: "assets/petImg/dogs/dog4.png",
@@ -93,7 +96,7 @@ List<Pet> Pets = [
       adopt: false,
       wishlist: false),
   Pet(
-      petNmae: "DOG",
+      petNmae: "sinu",
       petAge: "1.8 year",
       petprice: "\$7,500",
       petimg: "assets/petImg/dogs/dog5.png",
@@ -115,10 +118,10 @@ List<Pet> Pets = [
       adopt: false,
       wishlist: false),
   Pet(
-      petNmae: "CAT",
+      petNmae: "Samantha",
       petAge: "1 year",
       petprice: "\$5,000",
-      petimg: "assets/petImg/cat.png",
+      petimg: "assets/petImg/cats/cat.png",
       petbreed: "persian",
       petweight: "2 Kg",
       petsex: "Female",
@@ -126,10 +129,10 @@ List<Pet> Pets = [
       adopt: false,
       wishlist: false),
   Pet(
-      petNmae: "CAT",
+      petNmae: "meow",
       petAge: "1 year",
       petprice: "\$5,000",
-      petimg: "assets/petImg/cat3.png",
+      petimg: "assets/petImg/cats/cat3.png",
       petbreed: "persian",
       petweight: "2 Kg",
       petsex: "Female",
@@ -137,10 +140,10 @@ List<Pet> Pets = [
       adopt: false,
       wishlist: false),
   Pet(
-      petNmae: "CAT",
+      petNmae: "meow meow",
       petAge: "1 year",
       petprice: "\$5,000",
-      petimg: "assets/petImg/cat4.png",
+      petimg: "assets/petImg/cats/cat4.png",
       petbreed: "persian",
       petweight: "2 Kg",
       petsex: "Female",
@@ -148,7 +151,7 @@ List<Pet> Pets = [
       adopt: false,
       wishlist: false),
   Pet(
-      petNmae: "CAT",
+      petNmae: "Killi",
       petAge: "1 year",
       petprice: "\$5,000",
       petimg: "assets/petImg/birds/bird1.png",
@@ -159,7 +162,7 @@ List<Pet> Pets = [
       adopt: false,
       wishlist: false),
   Pet(
-      petNmae: "CAT",
+      petNmae: "bird",
       petAge: "1 year",
       petprice: "\$5,000",
       petimg: "assets/petImg/birds/bird2.png",
@@ -170,7 +173,7 @@ List<Pet> Pets = [
       adopt: false,
       wishlist: false),
   Pet(
-      petNmae: "CAT",
+      petNmae: "Pachai killi",
       petAge: "1 year",
       petprice: "\$5,000",
       petimg: "assets/petImg/birds/bird3.png",
@@ -181,25 +184,25 @@ List<Pet> Pets = [
       adopt: false,
       wishlist: false),
   Pet(
-      petNmae: "CAT",
+      petNmae: "Eagle",
       petAge: "1 year",
       petprice: "\$5,000",
       petimg: "assets/petImg/birds/bird4.png",
       petbreed: "persian",
       petweight: "2 Kg",
       petsex: "Female",
-      catogory: "Cat",
+      catogory: "Bird",
       adopt: false,
       wishlist: false),
   Pet(
-      petNmae: "CAT",
+      petNmae: "",
       petAge: "1 year",
       petprice: "\$5,000",
       petimg: "assets/petImg/rabbits/rabbit1.png",
       petbreed: "persian",
       petweight: "2 Kg",
-      petsex: "Female",
-      catogory: "Cat",
+      petsex: "Male",
+      catogory: "Rabbit",
       adopt: false,
       wishlist: false),
   Pet(
@@ -210,7 +213,7 @@ List<Pet> Pets = [
       petbreed: "persian",
       petweight: "2 Kg",
       petsex: "Female",
-      catogory: "Cat",
+      catogory: "Rabbit",
       adopt: false,
       wishlist: false),
 ];
