@@ -115,68 +115,61 @@ class _Detail_pageState extends State<Detail_page> {
           ),
           body: Column(
             children: [
-              Stack(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: Container(
-                      color: theme.primaryContainer,
-                      height: height * 0.4,
-                      child: Hero(
-                        tag: widget.intt,
-                        child: GestureDetector(
-                          onTap: () => showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                backgroundColor: Colors.white.withOpacity(0.3),
-                                title: InteractiveViewer(
-                                  maxScale: 5.0,
-                                  minScale: 0.01,
-                                  child: Image.asset(
-                                    widget.img,
-                                    height: height * 0.5,
-                                    width: width * 1,
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                          child: Image.asset(
+              Expanded(
+                flex: 2,
+                child: Container(
+                  color: theme.primaryContainer,
+                  height: height * 0.4,
+                  child: Hero(
+                    tag: widget.intt,
+                    child: GestureDetector(
+                      onTap: () => showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            backgroundColor: Colors.white.withOpacity(0.3),
+                            title: InteractiveViewer(
+                              maxScale: 5.0,
+                              minScale: 0.01,
+                              child: Image.asset(
+                                widget.img,
+                                height: height * 0.5,
+                                width: width * 1,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                      child: Stack(
+                        children: [
+                          Image.asset(
                             widget.img,
                             height: height * 0.5,
                             width: width * 1,
                             fit: BoxFit.contain,
                           ),
-                        ),
+                          Positioned(
+                            top: 0,
+                            left: width * 0.84,
+                            child: GestureDetector(
+                              onTap: () => setState(() {
+                                Pets[widget.intt].wishlist = true;
+                              }),
+                              child: icon_(
+                                  height: height * 0.05,
+                                  imgStr: "icons/heart.png",
+                                  width: width * 0.1,
+                                  color: Pets[widget.intt].wishlist
+                                      ? Colors.red
+                                      : theme.secondary),
+                            ),
+                          )
+                        ],
                       ),
                     ),
                   ),
-                  Positioned(
-                    top: 0,
-                    left: width * 0.84,
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: GestureDetector(
-                        onTap: () => setState(() {
-                          Pets[widget.intt].wishlist = true;
-                        }),
-                        child: SizedBox(
-                          width: width * 0.1,
-                          height: height * 0.05,
-                          child: icon_(
-                              height: height,
-                              imgStr: "icons/heart.png",
-                              width: width,
-                              color: Pets[widget.intt].wishlist
-                                  ? Colors.red
-                                  : theme.secondary),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
+                ),
               ),
               ClipRRect(
                 borderRadius: const BorderRadius.only(

@@ -1,7 +1,6 @@
 import 'package:alert_banner/exports.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:pet_adobtation_nymble/Const/color.dart';
 import 'package:pet_adobtation_nymble/Pages/Detail_pg.dart';
 
 import '../Data/data.dart';
