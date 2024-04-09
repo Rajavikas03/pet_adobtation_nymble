@@ -275,7 +275,7 @@ class _Detail_pageState extends State<Detail_page> {
                               if (!Pets[widget.intt].adopt) {
                                 setState(() {
                                   Pets[widget.intt].adopt = true;
-                                  Pets[widget.intt].wishlist = true;
+                                  // Pets[widget.intt].wishlist = true;
                                   widget.adopt = true;
                                   Pets[widget.intt].time =
                                       DateFormat('HH-mm-ss \'on\' dd/MM/yyyy')

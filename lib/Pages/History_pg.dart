@@ -30,25 +30,23 @@ class __History_pageState extends State<History_page> {
       body: ListView.builder(
         itemCount: Pets.length,
         itemBuilder: (context, index) {
-          if (Pets[index].wishlist) {
+          if (Pets[index].adopt == true) {
+            // String pe = Pets[index].time!;
             return Column(
               children: [
-                const Gap(10),
-                SizedBox(
-                  width: width * 0.8,
-                  child: ListTile(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    tileColor: theme.primary,
-                    title: Text(Pets[index].petNmae),
-                    subtitle: Text(Pets[index].time!),
-                  ),
+                Gap(5),
+                ListTile(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  tileColor: theme.primary,
+                  title: Text(Pets[index].petNmae),
+                  subtitle: Text(Pets[index].time!),
                 ),
-                const Gap(10),
+                Gap(5),
               ],
             );
           } else {
-            return null;
+            return Text("");
           }
         },
       ),
